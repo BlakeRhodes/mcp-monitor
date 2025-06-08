@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/seekrays/mcp-monitor/nvidia"
 	"github.com/mark3labs/mcp-go/server"
 	"github.com/seekrays/mcp-monitor/cpu"
 	"github.com/seekrays/mcp-monitor/disk"
@@ -13,6 +12,8 @@ import (
 	"github.com/seekrays/mcp-monitor/memory"
 	"github.com/seekrays/mcp-monitor/network"
 	"github.com/seekrays/mcp-monitor/process"
+	"github.com/seekrays/mcp-monitor/nvidia"
+	"github.com/seekrays/mcp-monitor/logs"
 )
 
 func main() {
@@ -42,6 +43,9 @@ func main() {
 
 	// Add nvidia tool
 	s.AddTool(nvidia.NewTool(), nvidia.Handler)
+
+	// Add logs tool
+	s.AddTool(logs.NewTool(), logs.Handler)
 
 	transport := flag.String("transport", "stdio", "Transport type (stdio or sse)")
 	port := flag.Int("port", 8080, "TCP port for SSE transport")
