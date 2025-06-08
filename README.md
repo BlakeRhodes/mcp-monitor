@@ -116,11 +116,17 @@ This works transparently for tools and scripts expecting traditional syslog file
 git clone https://github.com/seekrays/mcp-monitor.git
 cd mcp-monitor
 make build
-UsageRun the binary in stdio mode (MCP server):./mcp-monitor
-The service starts in stdio mode and will communicate over MCP with clients.LibreChat IntegrationTo connect MCP System Monitor to LibreChat or any compatible AI orchestration tool that supports SSE-based Model Context Protocol (MCP) endpoints, add the following configuration to your config.yaml or settings file:monitor:
+```
+## Usage
+
+Run the binary in stdio mode (MCP server):./mcp-monitor
+The service starts in stdio mode and will communicate over MCP with clients.LibreChat IntegrationTo connect MCP System Monitor to LibreChat or any compatible AI orchestration tool that supports SSE-based Model Context Protocol (MCP) endpoints, add the following configuration to your config.yaml or settings file:
+
+```yaml
+monitor:
     type: sse
     url: http://host.docker.internal:3001/sse
-
+```
 type: sse tells LibreChat to use Server-Sent Events for streaming data.
 url: should point to the MCP monitoring server.
 
@@ -161,4 +167,4 @@ MCP System Monitor provides low-level telemetry on the host system. Keep the fol
 
 ## Contributing
 
-Contributions are welcome! Please file an issue or submit a Pull Request.Maintainer: seekrays
+Contributions are welcome! Please file an issue or submit a Pull Request.
