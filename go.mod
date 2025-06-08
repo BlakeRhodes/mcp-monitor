@@ -3,6 +3,7 @@ module github.com/seekrays/mcp-monitor
 go 1.23
 
 require (
+	github.com/NVIDIA/go-nvml v0.12.4-1
 	github.com/mark3labs/mcp-go v0.14.1
 	github.com/shirou/gopsutil/v4 v4.25.2
 )
