@@ -28,7 +28,12 @@ func NewTool() mcp.Tool {
 func Handler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	path, _ := request.Params.Arguments["path"].(string)
 	allPartitions, _ := request.Params.Arguments["all_partitions"].(bool)
-
+	
+	// Set path if none is provided 
+	if path == "" {
+ 		path = "/"
+	}	
+	
 	// Get disk usage information
 	usage, err := disk.Usage(path)
 	if err != nil {
